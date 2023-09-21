@@ -23,13 +23,13 @@ where
         }
     }
 
-    pub fn call(&mut self, a: Args) -> Return {
-        if let Some(res) = self.cache.get(&a) {
-            (*res).clone()
+    pub fn call(&mut self, args: Args) -> Return {
+        if let Some(result) = self.cache.get(&args) {
+            (*result).clone()
         } else {
-            let res = (self.f)(a.clone());
-            self.cache.insert(a, res.clone());
-            res
+            let result = (self.f)(args.clone());
+            self.cache.insert(args, result.clone());
+            result
         }
     }
 }
