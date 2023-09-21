@@ -20,6 +20,7 @@ fn reps(args: (&str, &i32)) -> String {
     args.0.repeat(*args.1 as usize)
 }
 
+#[allow(dead_code)]
 fn maxx(nums: Vec<u32>) -> u32 {
     *nums.iter().max().unwrap_or(&0)
 }
