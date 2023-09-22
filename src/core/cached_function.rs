@@ -1,6 +1,7 @@
 use std::collections::HashMap;
 
 /// A wrapper struct for a function or closure which implements caching.
+#[allow(dead_code)]
 pub struct CachedFunction<Args, Return, Func>
 where
     Args: Clone + Eq + std::hash::Hash,
@@ -18,10 +19,10 @@ where
     Args: Clone + Eq + std::hash::Hash,
     Return: Clone,
     Func: Fn(Args) -> Return,
-{
-    /// Creates a new `CachedFunction` instance by providing function.
-    /// 
-    /// # Arguments
+    {
+        /// Creates a new `CachedFunction` instance by providing function.
+        /// 
+        /// # Arguments
     ///
     /// * `f` - a function which takes and returns singular data types which implement the
     ///         `Clone` trait as well as those required by `std::collections::HashMap`.
@@ -38,6 +39,7 @@ where
     /// let passed: usize = data.iter().count(|e| cached_function(e));
     /// ...
     /// ```
+    #[allow(dead_code)]
     pub fn new(f: Func) -> Self {
         CachedFunction {
             f,
@@ -60,6 +62,7 @@ where
     /// let args: T = ...
     /// let result = cached_function.call(args);
     /// ```
+    #[allow(dead_code)]
     pub fn call(&mut self, args: Args) -> Return {
         if let Some(result) = self.cache.get(&args) {
             (*result).clone()
